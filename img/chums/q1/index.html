@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Chums Live</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-2.1.3.js" integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8="
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+
+</head>
+
+<body>
+
+
+  <style>
+    .q-question #message001 {
+      margin-left: auto;
+      margin-right: auto;
+
+
+    }
+  </style>
+
+  <!-- Card -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-color">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+    </button>
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="#"> <img src="img/chums/chum.png" width="10%">
+          </a>
+        </li>
+      </ul>
+      <form class="form-inline">
+        <div class="md-form my-0 chums_home">
+          <a href="https://chums.live/">Home</a>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+
+  </div>
+
+
+  <div class="card start-quiz">
+
+    <div class="card-body">
+
+      <div class="text-center mb-3 txt-big">
+        <h4 class="card-title"><a class="title-q">Let see what you know about ChumsLive!</a></h4>
+        <img src="img/chums/chum.png" width="15%">
+      </div>
+
+      <div class="text-center mb-3 q-start">
+        <button type="button" class="btn bg-btn btn-block btn-rounded z-depth-1a show-quiz blue002"
+          onclick="begin001()">Start</button>
+
+
+        <button id="btnAdd" type="button" class="btn bg-btn btn-block btn-rounded z-depth-1a"
+          style="color: white;font-size: 18px;"> Add your info</button>
+
+        <section class="section">
+          <div class="container">
+
+            <div class="content">
+              <!-- <button id="btnAdd" type="button" class="btn bg-btn btn-block btn-rounded z-depth-1a "> Add your info</button> -->
+            </div>
+            <div id="card-list" class="columns is-mobile">
+
+            </div>
+          </div>
+
+
+
+
+          <div id="modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">Your Info</p>
+                <button class="btnClose delete" aria-label="close"></button>
+              </header>
+              <section class="modal-card-body">
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control">
+                    <input type="hidden" id="txtType">
+                    <input type="hidden" id="txtKey">
+                    <input class="input" id="txtName" type="text" placeholder="Name">
+                  </div>
+                  <p class="help"> </p>
+                </div>
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control">
+                    <input class="input" id="txtEmail" type="text" placeholder="Email">
+
+
+                  </div>
+                  <p class="help"> </p>
+                </div>
+                <div class="control">
+                  <input class="input" type="text" id="myText" class="form-control" placeholder="Chums ID" value="">
+                </div>
+
+                <div class="control" style="margin-top: 12px;">
+                  <input class="input" type="text" id="myusername" class="form-control" placeholder="Chums Username"
+                    value="">
+                </div>
+
+                <div class="field">
+                  <label class="label">Profile Picture</label>
+                  <div class="control">
+                    <input class="input" id="score101" type="text" placeholder="Profile picture url">
+                  </div>
+                  <p class="help"></p>
+                </div>
+              </section>
+              <footer class="modal-card-foot">
+
+
+                <button onclick="myFunction()" class="btn bg-btn btn-block btn-rounded z-depth-1a" style="width: 50%;
+                              color: white;">Save changes</button>
+
+                <!-- <button id = "btnSave" class="button is-success">Save changes</button> -->
+
+                <!-- <button id="btnClose" class="button">Cancel</button> -->
+              </footer>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="card quiz-card">
+    <div class="view overlay">
+      <div class="container">
+        <div class="row chums-info">
+          <div class="col">
+            <h4 style="font-weight:bold">Chums Id:</h4>
+            <p class="text-info" id="demo"></p>
+
+
+          </div>
+          <div class="col">
+            <h4 style="font-weight:bold">Username:</h4>
+            <p id="demoName" class="text-info"></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body">
+        <div class="grid quiz-body">
+          <div id="quiz" class="centered grid__col--8" style="margin-top: -75px;">
+            <!-- <div class="q-question">
+            <h2 id="message001" class="headline-secondary--grouped"></h2>
+          </div> -->
+            <div id="question" style="position: relative;
+          /* margin-top: 36px; */
+          top: 34px;">
+              <h1 style="font-size:35px">Quiz Over</h1>
+              <h2 class="headline-secondary--grouped" style="font-size: 33px;margin-top: 16px;"> Your Score is: <text
+                  id="score001"></text>
+                out of <text id="question001">0</text><br /></h2>
+              <!-- <p id="question001"></p> -->
+              <p id="totscore" style="display:none"></p>
+              <div class="text-center mb-3 q-start"><button
+                  class=" btn bg-btn retry_btn btn-block btn-rounded z-depth-1a" value="Refresh Page"
+                  onClick="history.go(0)">Retry Quiz</button></div>
+
+
+            </div>
+            <hr />
+
+            <div class="container">
+              <div class="row" id="disappear001">
+
+
+
+              </div>
+            </div>
+
+
+            <p id="message001" style="font-size: 27px;">
+            </p>
+            <!-- <p id="message001"></p> -->
+            <p id="message002"></p>
+            <p id="message003"></p>
+
+            <p id="checkBTN"></p>
+            <p id="checkMes02"></p>
+            <p id="checkMes03"></p>
+
+            <div>
+
+            </div>
+            <div id="pop">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+
+    <script>
+
+      function unCheck() {
+        document.getElementById("defaultInline1").checked = false;
+      }
+
+
+
+      var nextkey = 0;
+      var config = {
+        apiKey: "AIzaSyDgQZ-k-GuYVHkGWhGKrwCr18m8MnhMDl0",
+        authDomain: "chums-quizgame.firebaseapp.com",
+        databaseURL: "https://chums-quizgame.firebaseio.com",
+        projectId: "chums-quizgame",
+        storageBucket: "chums-quizgame.appspot.com",
+        messagingSenderId: "1004527595883",
+        appId: "1:1004527595883:web:5b3a4734ea4c7e27"
+      };
+      firebase.initializeApp(config);
+      var database = firebase.database();
+
+
+ var currentTime = 	Date.now()
+
+
+
+ console.log(currentTime);
+
+      database.ref('chums_q/').on('child_added', function (data) {
+        add_data_table(data.val().username, data.val().totalscore, data.val().chumsId, data.key);
+        var lastkey = data.key;
+        nextkey = parseInt(lastkey) + 1;
+      });
+
+      database.ref('chums_q/').on('child_changed', function (data) {
+        update_data_table(data.val().username, data.val().totalscore, data.val().chumsId, data.key)
+      });
+
+      function add_data_table(name, score, email, key) {
+        $("#card-list").append('<div class="column is-3" id="' + key + '"><div class="card"><div class="card-content"><div class="media"><div class="media-content"><p class="title is-4">' + name + '</p><p class="subtitle is-6">@' + email + '</p></div></div></div><footer class="card-footer"><a href="#" data-key="' + key + '" class="card-footer-item btnEdit">Edit</a><a href="#" class="card-footer-item btnRemove"  data-key="' + key + '">Remove</a></footer></div></div>');
+      }
+
+      function update_data_table(name, score, email, key) {
+        $("#card-list #" + key).html('<div class="card"><div class="card-image"></div><div class="card-content"><div class="media"><div class="media-content"><p class="title is-4">' + name + '</p><p class="subtitle is-6">@' + email + '</p></div></div></div><footer class="card-footer"><a href="#" class="card-footer-item btnEdit"  data-key="' + key + '">Edit</a><a  data-key="' + key + '" href="#" class="card-footer-item btnRemove">Remove</a></footer></div>');
+      }
+
+      function new_data(name, email, score, key) {
+        database.ref('chums_q/' + key).set({
+          chumsId: name,
+          username: email,
+          totalscore: score,
+
+        });
+      }
+
+
+      function update_data(name, email, score, key) {
+        database.ref('chums_q/' + key).update({
+          username: name,
+          email: email,
+          totalscore: score
+        });
+      }
+
+
+
+      function myFunction() {
+
+        $(".show-quiz").show()
+        $("#btnAdd").hide()
+        var x = document.getElementById("myText").value;
+        document.getElementById("txtName").value = x;
+        document.getElementById("demo").innerHTML = x;
+
+
+        var username = document.getElementById("myusername").value;
+        document.getElementById("txtEmail").value = username;
+        document.getElementById("demoName").innerHTML = username;
+        $("#modal").hide();
+      }
+
+
+
+      $("#btnAdd").click(function () {
+        $("#txtName").val("");
+        $("#txtEmail").val("");
+        $("#score101").val("");
+        // document.getElementById("score101").value = g++;
+        $("#txtType").val("N");
+        $("#txtKey").val("0");
+        $("#modal").addClass("is-active");
+
+      });
+      $("#btnSave").click(function () {
+        var currentTime = Date.now();
+
+
+        var scoring = document.getElementById("score001").innerHTML;
+        document.getElementById("score101").value = scoring;
+        document.getElementById("totscore").innerHTML = scoring;
+
+
+        if ($("#txtType").val() == 'N') {
+          database.ref('chums_q/').once("value").then(function (snapshot) {
+            if (snapshot.numChildren() == 0) {
+              nextkey = 1;
+            }
+            new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+          });
+        }
+        else {
+          update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+        }
+        $("#btnClose").click();
+      });
+
+      $(document).on("click", ".btnEdit", function (event) {
+        event.preventDefault();
+        key = $(this).attr("data-key");
+        database.ref('chums_q/' + key).once("value").then(function (snapshot) {
+          $("#txtName").val(snapshot.val().username);
+          $("#txtEmail").val(snapshot.val().chumsId);
+          $("#score101").val(snapshot.val().totalscore);
+          $("#txtType").val("E");
+          $("#txtKey").val(key);
+        });
+        $("#modal").addClass("is-active");
+      });
+
+      $("#btnClose,.btnClose").click(function () {
+        $("#modal").removeClass("is-active");
+      });
+
+
+
+
+
+      var shuffle001 = Math.floor(Math.random() * 6);
+      var a = ["<h2  class='headline-secondary--grouped'>What is a perfect example of a broadcast picture? </h2>  <div class'container'> <div class='row' > <div class='w-100'></div> <div class='col col-example'><img src='img/chums/q1/a.png'  class = 'choice-img'  /><button class='blue001 btn btn-danger btn-rounded guess1  waves-effect waves-light' onclick='onclick=q001()'>A</button></div><div class='col col-example'> <img src='img/chums/q1/b.png'  class = 'choice-img'  /><button class='blue001 btn btn-danger btn-rounded guess1  waves-effect waves-light' onclick=q002()> B </button></div> <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q1/c.png'  class = 'choice-img'  /><button class='blue001 btn btn-danger btn-rounded guess1  waves-effect waves-light' onclick=q002()> C </button> </div><div class='col col-example'><img src='img/chums/q1/d.png'  class = 'choice-img'  /> <button class='blue001 btn btn-danger btn-rounded guess1  waves-effect waves-light' onclick=q002()>D</button> </div></div> </div>",
+      ];
+
+      var b = ["<h2  class='headline-secondary--grouped'>Where do we go to join a clan?</h2> <div class'container'> <div class='row' > <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q2/a.png'  class = 'choice-img' /> <button class=' blue001 btn btn-danger btn-rounded guess0' onclick=q004()> A </button> </div>  <div class='col col-example'> <img src='img/chums/q2/b.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q004()> B </button> </div> <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q2/c.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q004()> C </button> </div> <div class='col col-example'> <img src='img/chums/q2/d.png'  class = 'choice-img' /> <button  class='blue001 btn btn-danger btn-rounded guess0' onclick=q003()> D </button> </div>",
+      ];
+
+      var c = ["<h2  class='headline-secondary--grouped'>Select 3 possible ways to top up.</h2> <div class'container'> <div class='row'>  <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q3/a.png'  class = 'choice-img' />  <input type='checkbox' class='blue001 abc' onclick=q005() ><p> A</p>  </div>  <div class='col col-example'> <img src='img/chums/q3/b.png'  class = 'choice-img' />    <input type='checkbox' class='blue001   wrongans' onclick=q006() id ='defaultInline1'> <p> B</p>  </div>  <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q3/c.png'  class = 'choice-img' />  <input type='checkbox' class='blue001  abc' onclick=q015()> <p> C</p> </div>  <div class='col col-example'> <img src='img/chums/q3/d.png'  class = 'choice-img' />    <input type='checkbox' class='blue001  abc' onclick=q025()> <p> D</p>  </div> </div> </div>"];
+
+      var h = ["<h2  class='headline-secondary--grouped'>Where do we go to check the hours and gems earned? </h2> <div class'container'> <div class='row' > <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q4/a.png'  class = 'choice-img' /> <button class=' blue001 btn btn-danger btn-rounded guess0' onclick=q008()> A </button> </div>  <div class='col col-example'> <img src='img/chums/q4/b.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q008()> B </button> </div> <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q4/c.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q008()> C </button> </div> <div class='col col-example'> <img src='img/chums/q4/d.png'  class = 'choice-img' /> <button  class='blue001 btn btn-danger btn-rounded guess0' onclick=q007()> D </button> </div>"];
+
+      var i = ["<h2  class='headline-secondary--grouped'>How to check the Ranking </h2> <div class'container'> <div class='row' > <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q5/a.png'  class = 'choice-img' /> <button class=' blue001 btn btn-danger btn-rounded guess0' onclick=q009()> A </button> </div>  <div class='col col-example'> <img src='img/chums/q5/b.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q010()> B </button> </div> <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q5/c.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q010()> C </button> </div> <div class='col col-example'> <img src='img/chums/q5/d.png'  class = 'choice-img' /> <button  class='blue001 btn btn-danger btn-rounded guess0' onclick=q010()> D </button> </div>"];
+
+      var j = ["<h2  class='headline-secondary--grouped'> Which is a perfect example of a standard live broadcast? </h2> <div class'container'> <div class='row' > <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q6/a.png'  class = 'choice-img' /> <button class=' blue001 btn btn-danger btn-rounded guess0' onclick=q011()> A </button> </div>  <div class='col col-example'> <img src='img/chums/q6/b.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q012()> B </button> </div> <div class='w-100'></div> <div class='col col-example'> <img src='img/chums/q6/c.png'  class = 'choice-img' /> <button  class=' blue001 btn btn-danger btn-rounded guess0' onclick=q012()> C </button> </div> <div class='col col-example'> <img src='img/chums/q6/d.png'  class = 'choice-img' /> <button  class='blue001 btn btn-danger btn-rounded guess0' onclick=q0012()> D </button> </div>"];
+
+
+      var random001 = Math.floor(Math.random() * a.length);
+      var random002 = Math.floor(Math.random() * b.length);
+      var random003 = Math.floor(Math.random() * c.length);
+      var random004 = Math.floor(Math.random() * h.length);
+      var random005 = Math.floor(Math.random() * i.length);
+      var random006 = Math.floor(Math.random() * j.length);
+
+
+      var d = [" <h2 class='pop-correct'>Correct</h2><img src='img/chums/correct.png' class='correct-img'>"];
+      var e = ["<h2 class='pop-correct'>Wrong</h2><img src='img/chums/wrong.png' class='correct-img'>"];
+
+      var f = 0;
+      f++;
+      var g = 0;
+      g++;
+
+      $("#closeBtn").click(function () {
+
+        $("#checkMes02").hide()
+        $("#checkMes03").hide()
+
+
+      });
+
+
+
+      function begin001() {
+        question001.innerHTML = f++;
+        disappear001.innerHTML = "";
+        if (shuffle001 == "0") {
+          message001.innerHTML = a[random001];
+
+        } else if (shuffle001 == "1") {
+          message001.innerHTML = b[random002];
+
+        } else if (shuffle001 == "2") {
+          message001.innerHTML = c[random003];
+
+        } else if (shuffle001 == "3") {
+          message001.innerHTML = h[random004];
+
+        } else if (shuffle001 == "4") {
+          message001.innerHTML = i[random005];
+
+        } else if (shuffle001 == "5") {
+          message001.innerHTML = j[random006];
+
+        }
+
+      }
+
+      function q001() {
+        score001.innerHTML = g++;
+
+        // document.getElementById("score001").value = g++;
+
+        message001.innerHTML = "";
+        message002.innerHTML = d;
+        message003.innerHTML = "  <div class='modal-footer'><button class='blue002 btn btn-outline-primary' onclick=next001()>Next</button> </div>";
+      }
+
+      function q002() {
+        message001.innerHTML = "";
+        message002.innerHTML = e;
+        message003.innerHTML = "<div class='modal-footer'><button class='blue002 btn btn-outline-primary' onclick=next001()>Next</button> </div>";
+      }
+
+      function next001() {
+        random002 = Math.floor(Math.random() * b.length);
+        if (f > 6) {
+          message001.innerHTML = "";
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+          document.getElementById("question").style.display = 'block';
+
+          var scoring = document.getElementById("score001").innerHTML;
+          document.getElementById("score101").value = scoring;
+          document.getElementById("totscore").innerHTML = scoring;
+
+
+
+          // var currentTime = Date.now();
+          // database.ref('chums_q/' ).update({
+
+          //   // [currentTime] : false
+          // })
+
+          if ($("#txtType").val() == 'N') {
+            database.ref('chums_q/').once("value").then(function (snapshot) {
+              if (snapshot.numChildren() == 0) {
+                nextkey = 1;
+              }
+              new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+            });
+          }
+          else {
+            update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+          }
+          $("#btnClose").click();
+
+        } else {
+          message001.innerHTML = b[random002];
+          question001.innerHTML = f++;
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+        }
+      }
+
+      function q003() {
+        score001.innerHTML = g++;
+        // document.getElementById("score001").value = g++;
+        message001.innerHTML = "";
+        message002.innerHTML = d;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next002()>Next</button> </div>";
+      }
+
+      function q004() {
+        message001.innerHTML = "";
+        message002.innerHTML = e;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next002()>Next</button> </div>";
+      }
+
+      function next002() {
+        random003 = Math.floor(Math.random() * c.length);
+        if (f > 6) {
+          message001.innerHTML = "";
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+          document.getElementById("question").style.display = 'block';
+
+
+          // var currentTime = Date.now();
+          // database.ref('chums_q/').update({
+
+          //   // [currentTime] : false
+          // })
+
+
+          var scoring = document.getElementById("score001").innerHTML;
+          document.getElementById("score101").value = scoring;
+          document.getElementById("totscore").innerHTML = scoring;
+
+
+          if ($("#txtType").val() == 'N') {
+            database.ref('chums_q/').once("value").then(function (snapshot) {
+              if (snapshot.numChildren() == 0) {
+                nextkey = 1;
+              }
+              new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+            });
+          }
+          else {
+            update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+          }
+          $("#btnClose").click();
+
+        } else {
+          message001.innerHTML = c[random003];
+          question001.innerHTML = f++;
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+        }
+      }
+
+      function q005() {
+
+
+
+        $("input[type='checkbox'].abc").change(function () {
+          var a = $("input[type='checkbox'].abc");
+          if (a.length == a.filter(":checked").length) {
+            score001.innerHTML = g++
+            message001.innerHTML = "";
+            message002.innerHTML = d;
+            message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next003()>Next</button> </div>";
+            // document.getElementById("score001").value = g++;
+          }
+
+        });
+
+      }
+
+
+      function q015() {
+
+
+        $("input[type='checkbox'].abc").change(function () {
+          var a = $("input[type='checkbox'].abc");
+          if (a.length == a.filter(":checked").length) {
+
+            message001.innerHTML = "";
+            message002.innerHTML = d;
+            message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next003()>Next</button> </div>";
+
+          }
+
+        });
+
+      }
+      function q025() {
+
+
+        $("input[type='checkbox'].abc").change(function () {
+          var a = $("input[type='checkbox'].abc");
+          if (a.length == a.filter(":checked").length) {
+
+            message001.innerHTML = "";
+            message002.innerHTML = d;
+            message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next003()>Next</button> </div>";
+
+          }
+
+        });
+
+      }
+
+      function q006() {
+        message001.innerHTML = "";
+        message002.innerHTML = e;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary closeBtn' onclick='next003()'>Next</button> </div>";
+
+
+      }
+
+      function next003() {
+        random004 = Math.floor(Math.random() * h.length);
+        if (f > 6) {
+          message001.innerHTML = "";
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+          document.getElementById("question").style.display = 'block';
+
+
+          // var currentTime = Date.now();
+          // database.ref('chums_q/' ).update({
+
+          //   // [currentTime] : false
+          // })
+
+
+          var scoring = document.getElementById("score001").innerHTML;
+          document.getElementById("score101").value = scoring;
+          document.getElementById("totscore").innerHTML = scoring;
+
+
+          if ($("#txtType").val() == 'N') {
+            database.ref('chums_q/').once("value").then(function (snapshot) {
+              if (snapshot.numChildren() == 0) {
+                nextkey = 1;
+              }
+              new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+            });
+          }
+          else {
+            update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+          }
+          $("#btnClose").click();
+
+
+        } else {
+          message001.innerHTML = h[random004];
+          question001.innerHTML = f++;
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+        }
+      }
+
+      function q007() {
+
+        // document.getElementById("score001").value = g++;
+        score001.innerHTML = g++;
+        message001.innerHTML = "";
+        message002.innerHTML = d;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next004()>Next</button> </div>";
+      }
+
+      function q008() {
+        message001.innerHTML = "";
+        message002.innerHTML = e;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next004()>Next</button> </div>";
+      }
+
+      function next004() {
+        random005 = Math.floor(Math.random() * i.length);
+        if (f > 6) {
+          message001.innerHTML = "";
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+          document.getElementById("question").style.display = 'block';
+
+
+          // var currentTime = Date.now();
+          // database.ref('chums_q/' ).update({
+
+          //   // [currentTime] : false
+          // })
+
+          var scoring = document.getElementById("score001").innerHTML;
+          document.getElementById("score101").value = scoring;
+          document.getElementById("totscore").innerHTML = scoring;
+
+
+          if ($("#txtType").val() == 'N') {
+            database.ref('chums_q/').once("value").then(function (snapshot) {
+              if (snapshot.numChildren() == 0) {
+                nextkey = 1;
+              }
+              new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+            });
+          }
+          else {
+            update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+          }
+          $("#btnClose").click();
+
+
+        } else {
+          message001.innerHTML = i[random005];
+          question001.innerHTML = f++;
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+        }
+      }
+
+      function q009() {
+        score001.innerHTML = g++;
+
+        // document.getElementById("score001").value = g++;
+        message001.innerHTML = "";
+        message002.innerHTML = d;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next005()>Next</button> </div>";
+      }
+
+      function q010() {
+        message001.innerHTML = "";
+        message002.innerHTML = e;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next005()>Next</button> </div>";
+      }
+
+      function next005() {
+        random006 = Math.floor(Math.random() * j.length);
+        if (f > 6) {
+          message001.innerHTML = "";
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+          document.getElementById("question").style.display = 'block';
+
+         
+          var currentTime = Date.now();
+          database.ref('chums_q/').update({
+
+            // [currentTime] : true
+          })
+
+          var scoring = document.getElementById("score001").innerHTML;
+          document.getElementById("score101").value = scoring;
+          document.getElementById("totscore").innerHTML = scoring;
+
+
+          if ($("#txtType").val() == 'N') {
+            database.ref('chums_q/').once("value").then(function (snapshot) {
+              if (snapshot.numChildren() == 0) {
+                nextkey = 1;
+              }
+              new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+            });
+          }
+          else {
+            update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+          }
+          $("#btnClose").click();
+
+
+        } else {
+          message001.innerHTML = j[random006];
+          question001.innerHTML = f++;
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+        }
+      }
+
+      function q011() {
+        score001.innerHTML = g++;
+
+        // document.getElementById("score001").value = g++;
+        message001.innerHTML = "";
+        message002.innerHTML = d;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next010()>Next</button> </div>";
+      }
+
+      function q012() {
+        message001.innerHTML = "";
+        message002.innerHTML = e;
+        message003.innerHTML = "<div class='modal-footer'> <button class='blue002 btn btn-outline-primary' onclick=next010()>Next</button> </div>";
+      }
+
+
+      function next010() {
+        if (f > 6) {
+
+          // var currentTime = Date.now();
+          // database.ref('chums_q/').update({
+
+          //   // [currentTime] : true
+          // })
+
+
+          var scoring = document.getElementById("score001").innerHTML;
+          document.getElementById("score101").value = scoring;
+          document.getElementById("totscore").innerHTML = scoring;
+
+
+          if ($("#txtType").val() == 'N') {
+            database.ref('chums_q/').once("value").then(function (snapshot) {
+              if (snapshot.numChildren() == 0) {
+                nextkey = 1;
+              }
+              new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), nextkey);
+
+
+            });
+          }
+          else {
+            update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(), $("#txtKey").val());
+          }
+          $("#btnClose").click();
+          message001.innerHTML = "";
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+          document.getElementById("question").style.display = 'block';
+        } else {
+          message001.innerHTML = a[random001];
+          question001.innerHTML = f++;
+          message002.innerHTML = "";
+          message003.innerHTML = "";
+        }
+      }
+
+      //custom js
+
+      $(".quiz-card").hide();
+      $("#question").hide();
+      $(".show-quiz").hide();
+
+      $("#card-list").hide()
+
+      $(".field").hide()
+
+      $(document).ready(function () {
+
+        $(".show-quiz").click(function () {
+          $(".quiz-card").show();
+          $(".start-quiz").hide();
+        });
+
+        // $("#btnSave").click(function () {
+        //   $(".show-quiz").show();
+
+        // });
+
+      });
+
+
+
+    </script>
+
+
+</body>
+
+</html>

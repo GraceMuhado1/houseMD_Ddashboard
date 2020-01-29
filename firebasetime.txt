@@ -1,0 +1,358 @@
+	var timestamp = Date.now()
+		var res = moment(timestamp).format('YYYYMMDD, h:mm:ss');
+
+		console.log(res);
+
+		console.log(timestamp);
+
+
+
+
+        <!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Chums Live</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-2.1.3.js"
+		integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+
+
+
+  <script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
+
+</head>
+
+<body>
+	<section class="section">
+		<div class="container">
+
+			<div class="content">
+				<button id="btnAdd" class="button"><i class="fa fa-plus"></i> Add List</button>
+			</div>
+			<div id="card-list" class="columns is-mobile">
+
+			</div>
+
+			<table class="table table-bordered">
+
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+					
+						<th scope="col">Chums ID</th>
+						<th scope="col">time</th>
+						<th scope="col">Chums Username</th>
+						<th scope="col">Score</th>
+						<th scope="col">Edit</th>
+						<th scope="col">Remove</th>
+					</tr>
+
+				</thead>
+
+
+				<tbody id="chums-table">
+
+
+				</tbody>
+			</table>
+		</div>
+		</div>
+
+
+
+
+		<div id="modal" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Person Form</p>
+					<button class="btnClose delete" aria-label="close"></button>
+				</header>
+				<section class="modal-card-body">
+
+						<div class="field">
+								<label class="label">Quiz Time</label>
+								<div class="control">
+									<input class="input" id="timequiz" type="text" placeholder="username">
+		
+								</div>
+								<p class="help"> </p>
+							</div>
+
+					<div class="field">
+						<label class="label">Chums ID</label>
+						<div class="control">
+							<input type="hidden" id="txtType">
+							<input type="hidden" id="txtKey">
+							<input class="input" id="txtName" type="text" placeholder="Chums ID">
+						</div>
+						<p class="help"> </p>
+					</div>
+					<div class="field">
+						<label class="label">Username</label>
+						<div class="control">
+							<input class="input" id="txtEmail" type="text" placeholder="username">
+
+						</div>
+						<p class="help"> </p>
+					</div>
+					<div class="field">
+						<label class="label">Score</label>
+						<div class="control">
+							<input class="input" id="score101" type="text" placeholder="score">
+						</div>
+						<p class="help"></p>
+					</div>
+				</section>
+				<div class="modal-card-foot chums-save">
+					<button id="btnSave" class="btn bg-btn retry_btn btn-block btn-rounded z-depth-1a">Save changes</button>
+					<!-- <button id="btnSavetime" class="button is-success">Save changes</button> -->
+					<button id="btnClose" class="btn bg-btn retry_btn btn-block btn-rounded z-depth-1a">Cancel</button>
+				</div >
+			</div>
+		</div>
+	</section>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+
+
+
+	<script>
+		var nextkey = 0;
+		var config = {
+			apiKey: "AIzaSyDgQZ-k-GuYVHkGWhGKrwCr18m8MnhMDl0",
+			authDomain: "chums-quizgame.firebaseapp.com",
+			databaseURL: "https://chums-quizgame.firebaseio.com",
+			projectId: "chums-quizgame",
+			storageBucket: "chums-quizgame.appspot.com",
+			messagingSenderId: "1004527595883",
+			appId: "1:1004527595883:web:5b3a4734ea4c7e27"
+		};
+		firebase.initializeApp(config);
+		var database = firebase.database();
+
+
+// var timestamp = Date.now();
+//     var currentTime = new Date(timestamp);
+	
+//     var hours = currentTime.getHours();
+//     var minutes = currentTime.getMinutes();
+//     var seconds = currentTime.getSeconds();
+//     var month = currentTime.getMonth() + 1; // January is month 0
+//     var day = currentTime.getDate();
+//     var year = currentTime.getFullYear();
+
+// //    console.log(hours + ":" + minutes + ":" + seconds + " " + month + "/" + day + "/" + year);
+//    console.log(currentTime.toLocaleString('en-US', { hours: 'numeric', minutes: 'numeric', hour12: true }));
+
+// var timestamp = Date.now()
+
+// var currentTime = new Date(timestamp);
+// console.log(currentTime)
+
+
+// 		var timestamp = Date.now()
+//   , date = new Date(timestamp * 1000)
+//   , datevalues = [
+//          date.getUTCFullYear()
+//         ,date.getUTCMonth()+1
+//         ,date.getUTCDate()
+//         ,date.getUTCHours()
+//         ,date.getUTCMinutes()
+//         ,date.getUTCSeconds()
+//      ];
+// console.log(datevalues);
+		// var timestamp = Date.now()
+		// var res = moment(timestamp).format('YYYYMMDD, h:mm:ss');
+
+		// console.log(res);
+
+		// console.log(timestamp);
+		
+// datenow = new Date(timestamp * 1000),
+
+// datevalues = [
+
+//  datenow.getFullYear(),
+//    datenow.getMonth()+1,
+//    datenow.getDate(),
+//    datenow.getHours(),
+//    datenow.getMinutes(),
+//    datenow.getSeconds(),
+   
+   
+// ];
+
+// document.getElementById("time").innerHTML = dateString; 
+
+// console.log (datevalues);
+
+ 
+
+// let today = new Date();
+// let timestamp2 = today.valueOf();
+// console.log(today); 
+
+
+
+// var unixtime = 1561571075460;
+
+// var newDate = new Date();
+// newDate.setTime(unixtime * 1000);
+// dateString = newDate.toUTCString();
+
+// console.log(dateString);
+
+var timestamp = Date.now()
+		var q_time = moment(timestamp).format('YYYYMMDD, h:mm:ss');
+	// console.log(q_time);
+	document.getElementById("timequiz").value = q_time;
+
+		database.ref('chums_q/').on('child_added', function (data) {
+			add_data_table(data.val().chumsId, data.val().username, data.val().totalscore,data.val().quiztime, data.key);
+			var lastkey = data.key;
+			nextkey = parseInt(lastkey) + 1;
+		});
+
+		database.ref('chums_q/').on('child_changed', function (data) {
+			update_data_table(data.val().chumsId, data.val().username, data.val().totalscore,data.val().quiztime, data.key)
+		});
+
+		database.ref('chums_q/').on('child_removed', function (data) {
+			remove_data_table(data.key)
+		});
+
+		function add_data_table(id, name, score,q_time, key) {
+			$("#chums-table").append('<tr  id="'+key+'"><th scope="row"></th><td>' + id + '</td> <td>' + q_time + '</td><td>' + name + '</td><td>' + score + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn bg-btn  btn-rounded z-depth-1a" style = "color:white">Edit</button></a></td><td><a href="#" class="btnRemove"  data-key="' + key + '"><button class="btn bg-btn  btn-rounded z-depth-1a" style = "color:white">Remove</button></a></td> </tr>');
+		}
+
+		function update_data_table(id, name, score,q_time, key) {
+			$("#chums-table #"+ key).html('  <th scope="row"></th><td>' + id + '</td> <td>' + q_time + '</td><td>' + name + '</td><td>' + score + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn bg-btn  btn-rounded z-depth-1a" style = "color:white">Edit</button></a></td><td><a href="#" class="btnRemove"  data-key="' + key + '"><button class="btn bg-btn  btn-rounded z-depth-1a" style = "color:white">Remove</button></a></td>');
+		}
+
+
+
+		function remove_data_table(key) {
+			$("#chums-table #"+ key).remove();
+		}
+
+		function new_data(id, name, score, q_time,key) {
+			database.ref('chums_q/' + key).set({
+				chumsId: id,
+				username: name,
+				totalscore: score,
+				quiztime : q_time
+			});
+		}
+
+
+		function update_data(id, name, score,q_time, key) {
+			database.ref('chums_q/' + key).update({
+				chumsId: id,
+				username: name,
+				totalscore: score,
+				quiztime : q_time
+			});
+		}
+
+
+		$("#btnAdd").click(function () {
+			$("#txtName").val("");
+			$("#txtEmail").val("");
+			$("#score101").val("");
+			document.getElementById("timequiz").value = q_time;
+			$("#txtType").val("N");
+			$("#txtKey").val("0");
+			$("#modal").addClass("is-active");
+
+
+		});
+	
+
+		$("#btnSave").click(function () {
+
+		
+
+			var timestamp = Date.now()
+		var q_time = moment(timestamp).format('YYYYMMDD, h:mm:ss');
+	console.log(q_time);
+
+
+			if ($("#txtType").val() == 'N') {
+				database.ref('chums_q/').once("value").then(function (snapshot) {
+					if (snapshot.numChildren() == 0) {
+						nextkey = 1;
+					}
+					new_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(),$("#timequiz").val(), nextkey);
+
+					
+				});
+			}
+			else {
+				update_data($("#txtName").val(), $("#txtEmail").val(), $("#score101").val(),$("#timequiz").val() ,$("#txtKey").val());
+			}
+			$("#btnClose").click();
+
+
+		});
+		$(document).on("click", ".btnEdit", function (event) {
+			event.preventDefault();
+			key = $(this).attr("data-key");
+			database.ref('chums_q/' + key).once("value").then(function (snapshot) {
+				$("#txtName").val(snapshot.val().username);
+				$("#txtEmail").val(snapshot.val().chumsId);
+				$("#score101").val(snapshot.val().totalscore);
+				$("#txtType").val("E");
+				$("#txtKey").val(key);
+			});
+			$("#modal").addClass("is-active");
+
+
+
+			
+		});
+		$(document).on("click", ".btnRemove", function (event) {
+			event.preventDefault();
+			key = $(this).attr("data-key");
+			database.ref('chums_q/' + key).remove();
+		})
+
+		$("#btnClose,.btnClose").click(function () {
+			$("#modal").removeClass("is-active");
+		});
+
+
+        // $("#btnSavetime").click(function(){
+        //     var currentTime = Date.now();
+        //     var ref = firebase.database().ref('chums_q/').update({
+        //         [currentTime] : true
+        //     })
+        // })
+	</script>
+
+
+
+</body>
+
+</html>
