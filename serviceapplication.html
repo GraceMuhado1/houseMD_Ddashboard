@@ -189,6 +189,8 @@
 
 
     <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"> <img src="img/dashboard/jimmy.jpg" style = "width: 45px;height: 39px;border-radius: 44px;"><span style = "margin: 12px;font-size: 16px;">David Grey</span> <a style = " margin: 59px; font-size: 12px;top: -15px; position: relative;">Admin</a></button>
+
 		<a href = "dashboard.html"><button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Dashboard <i class="fas fa-home"></i></button></a>
 		<a href = "servicerequest.html"><button class="tablinks" >Providers <i class="fas fa-user-tie"></i></button></a>
 		<a href = "members.html"> <button class="tablinks" >Members <i class="fas fa-users"></i></button></a>
@@ -279,14 +281,16 @@
 
 
 
-    <div id="modal" class="modal">
+    <div id="modal" class="modal"  >
         <div class="modal-background"></div>
         <div class="modal-card">
-            <header class="modal-card-head blue-gradient">
+            <header class="modal-card-head blue-gradient" style = "width: 379px;    display: block;
+            margin-left: auto;
+            margin-right: auto;">
                 <p class="modal-card-title">Status succesfully change</p>
-                <button class="btnClose delete" aria-label="close"></button>
+               
             </header>
-            <section class="modal-card-body" style = "display:none" >
+            <section class="modal-card-body " style = "display:none" >
                 <div class="field">
                     <label class="label">Status</label>
                     <div class="control">
@@ -300,9 +304,11 @@
                 </div>
                
             </section>
-            <div class="modal-card-foot chums-save">
-                <button id="btnSave" class="btn blue-gradient" style="color:white">ok</button>   
-                <button id="btnSaverole" class="btn blue-gradient" style="color:white">role</button>               
+            <div class="modal-card-foot chums-save" style = "width: 379px;    display: block;
+            margin-left: auto;
+            margin-right: auto;">
+                <button id="btnSave" class="btn blue-gradient btnSaverole" style="color:white">ok</button>   
+                    
             </div>
         </div>
 
@@ -430,7 +436,7 @@
             $("#btnClose").click();
         });
 
-        $("#btnSaverole").click(function () {
+        $(".btnSaverole").click(function () {
 
 if ($("#txtType").val() == 'N') {
     database.ref('profile/').once("value").then(function (snapshot) {

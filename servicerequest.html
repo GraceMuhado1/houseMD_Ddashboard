@@ -81,6 +81,13 @@ body {font-family: "Lato", sans-serif;}
   margin-top: 80px;
 
 }
+
+#th{
+	font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+
 </style>
 
 
@@ -127,6 +134,8 @@ body {font-family: "Lato", sans-serif;}
 	  </header>
 
 	  <div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"> <img src="img/dashboard/jimmy.jpg" style = "width: 45px;height: 39px;border-radius: 44px;"><span style = "margin: 12px;font-size: 16px;">David Grey</span> <a style = " margin: 59px; font-size: 12px;top: -15px; position: relative;">Admin</a></button>
+
 		<a href = "dashboard.html"><button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Dashboard <i class="fas fa-home"></i></button></a>
 		<a href = "servicerequest.html"><button class="tablinks" >Providers <i class="fas fa-user-tie"></i></button></a>
 		<a href = "members.html"> <button class="tablinks" >Members <i class="fas fa-users"></i></button></a>
@@ -178,16 +187,16 @@ body {font-family: "Lato", sans-serif;}
 
 			<div class="table-responsive">
   <table class="table" id="example">
-    <thead >
-      <tr>
-		<th>Profile</th>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Address</th>
-		<th>Service Status</th>
-		<th>Service Name</th>
-        <th>Action</th>
-        <th>Action</th>
+    <thead style = "    background-color: #3fa2e2;">
+      <tr id = "th">
+		<th id = "th" >Profile</th>
+		<th id = "th">First Name</th>
+		<th id = "th">Last Name</th>
+		<th id = "th">Address</th>
+		<th id = "th">Service Status</th>
+		<th id = "th">Service Name</th>
+        <th id = "th">Action</th>
+        <th id = "th">Action</th>
       </tr>
     </thead>
     <tbody id="hmd-table">
@@ -244,7 +253,7 @@ body {font-family: "Lato", sans-serif;}
 					
 					</div>
 					<div class="field">
-						<label class="label">Gender</label>
+						<label class="label">Address</label>
 						<div class="control">
 							<input class="input" id="txtgender" type="text" placeholder="score">
 						</div>
@@ -252,7 +261,7 @@ body {font-family: "Lato", sans-serif;}
 					</div>
 
 					<div class="field">
-						<label class="label">Home Address</label>
+						<label class="label">Service Status</label>
 						<div class="control">
 							<input class="input" id="txtaddress" type="text" placeholder="score">
 						</div>
@@ -260,7 +269,7 @@ body {font-family: "Lato", sans-serif;}
 					</div>
 
 					<div class="field">
-						<label class="label">Mobile Number</label>
+						<label class="label">Service Name</label>
 						<div class="control">
 							<input class="input" id="txtnumber" type="text" placeholder="score">
 						</div>
@@ -308,7 +317,7 @@ body {font-family: "Lato", sans-serif;}
 		});
 
 		function add_data_table(requesterPhoto, requesterFname, requesterLname, requesterAddress, serviceStatus, serviceName, email, key) {
-			$("#hmd-table").append('<tr  id="'+key+'"><td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td><td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td>' + email + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=""> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td></tr>');
+			$("#hmd-table").append('<tr  id="'+key+'"><td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td><td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=""> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td></tr>');
 		
  
         
@@ -317,7 +326,7 @@ body {font-family: "Lato", sans-serif;}
 
 
 		function update_data_table(requesterPhoto, requesterFname, requesterLname, requesterAddress, serviceName, mobileNumber, email) {
-			$("#hmd-table #"+ key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td> <td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Remove</button></a></td><td><a href="#" data-key="' + key + '" class=" "> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td>');
+			$("#hmd-table #"+ key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td> <td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Remove</button></a></td><td><a href="#" data-key="' + key + '" class=" "> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td>');
 		}
 
 
@@ -402,10 +411,14 @@ body {font-family: "Lato", sans-serif;}
 			$("#modalRemovebox").removeClass("is-active")
 		})
 
-		$(document).on("click", ".btnRemove", function () {		
+		$(document).on("click", ".btnRemove", function (event) {		
 			$("#modalRemovebox").addClass("is-active")
 		})
 
+
+		$(document).on("click", "#btnClose", function () {		
+			$("#modal").removeClass("is-active")
+		})
 
 		$(document).ready(function(){
   $("#myInput").on("keyup", function() {
