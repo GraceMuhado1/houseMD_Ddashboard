@@ -2,144 +2,91 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta firstName="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>House MD</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.1.3.js"
-        integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+ 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>House MD</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-2.1.3.js"
+		integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.min.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.min.js"></script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<!-- DataTables CSS -->
+<link href="css/addons/datatables.min.css" rel="stylesheet">
+<!-- DataTables JS -->
+<script href="js/addons/datatables.min.js" rel="stylesheet"></script>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<!-- DataTables Select CSS -->
+<link href="css/addons/datatables-select.min.css" rel="stylesheet">
+<!-- DataTables Select JS -->
+<script href="js/addons/datatables-select.min.js" rel="stylesheet"></script>
 </head>
 <style>
-    * {
-        box-sizing: border-box
-    }
+  * {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
 
-    body {
-        font-family: "Lato", sans-serif;
-    }
-
-    /* Style the tab */
-    .tab {
-        float: left;
-        border: 1px solid #ccc;
-        background: linear-gradient(40deg, #303f9f, #45cafc);
-        width: 14%;
-        height: 100vh;
-        margin-top: 75px;
-    }
-
-    /* Style the buttons inside the tab */
-    .tab button {
-        display: block;
-        background-color: inherit;
-        color: white;
-        padding: 22px 16px;
-        width: 100%;
-        border: none;
-        outline: none;
-        text-align: left;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 17px;
-    }
-
-    /* Change background color of buttons on hover */
-    .tab button:hover {
-        background-color: #ddd;
-    }
-
-    /* Create an active/current "tab button" class */
-    .tab button.active {
-        background-color: #ccc;
-    }
-
-    /* Style the tab content */
-    .tabcontent {
-        float: left;
-        padding: 0px 12px;
-        border: 1px solid #ccc;
-        width: 82%;
-        border-left: none;
-        height: 300px;
-        margin-top: 80px;
-
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .service_title{
-	font-weight: bold;
-    font-size: 26px;
-    margin: 30px;
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background: linear-gradient(40deg, #303f9f, #45cafc);
+  width: 14%;
+  height: 120vh;
+  margin-top: 75px;
 }
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  /* border: 1px solid #ccc; */
+  width: 82%;
+  border-left: none;
+      /* height: 1500px; */
+  margin-top: 80px;
+
+}
+
 
 #th{
 	font-weight: bold;
@@ -205,41 +152,10 @@
 	  </div>
 
     <div id="London" class="tabcontent">
+            <button type="button" style = "margin: 19px;border: 2px solid #3e9cdd;" class="btn btn-rounded btn-lg">Service Application<i class="fas fa-scroll"></i></button>
 
-        <button type="button" style = "margin: 19px;border: 2px solid #3e9cdd;" class="btn btn-rounded btn-lg">Application<i class="fas fa-scroll"></i></button>
-
-        <form class="form-inline active-pink-4 chumsSearch" style = "float:right" >
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-              aria-label="Search" id = "myInput">
-            <i class="fas fa-search" aria-hidden="true"></i> 
-        </form>
-        <!-- <div class="table-responsive text-nowrap">
-			 
-			  <table class="table table-striped" id="example">
-		  
-			
-				<thead>
-				  <tr>
-					<th>Profile</th>
-					<th>First firstName</th>
-					<th>Last firstName</th>
-					<th>Gender</th>
-					<th>Home Address</th>
-					<th>Mobile Number</th>
-					<th>Email</th>
-					<th>Action</th>
-					
-				  </tr>
-				</thead>
-				
-				<tbody id="hmd-table">
-				  
-				</tbody>
-				
-		  
-			  </table>
-		
-			</div> -->
+     	<p style = "float:right;margin: 30px;color: #bb4242;font-size: 14px;">Application / Service </p>
+                    <div class="table-responsive card" style ="padding: 30px;">
         <div class="table-responsive">
             <!-- Trigger/Open The Modal -->
 
@@ -250,9 +166,6 @@
                         <th id = "th">First Name</th>
                         <th id = "th">Last Name</th>
                         <th id = "th">Status</th>
-                        <th id = "th">Mobile Number</th>
-                        <th id = "th">Email</th>
-                        <!-- <th>Primary Care</th> -->
                         <th id = "th">Accept</th>
                         <th id = "th">Reject</th>
                     </tr>
@@ -263,7 +176,7 @@
             </table>
         </div>
     </div>
- 
+ </div>
     <!-- <button class="btn btn blue-gradient btn-rounded btnEdit" style="color:white">Add</button></a></td> -->
 
 
@@ -331,37 +244,59 @@
         </div>
     </div>
 
+<script>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
-    <script>
-        var config = {
-            apiKey: "AIzaSyB-QqOCEreJ1Yn9EWb84NdwJ4E-FvKfC7I",
-            authDomain: "edok-1c5a9.firebaseapp.com",
-            databaseURL: "https://edok-1c5a9.firebaseio.com",
-            projectId: "edok-1c5a9",
-            storageBucket: "edok-1c5a9.appspot.com",
-            messagingSenderId: "628540937215",
-            appId: "1:628540937215:web:6d7ad591c271f0d0394dca",
-            measurementId: "G-LH94VM5FTM"
-        };
-        firebase.initializeApp(config);
-        var database = firebase.database();
+		$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#hmd-table tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});	
+</script>
 
-        database.ref('serviceProviderApplications/').on('child_added', function (data) {
-            add_data_table(data.val().selfiePhotoURL, data.val().firstName, data.val().lastName, data.val().status, data.val().mobileNumber, data.val().email, data.key);
-            var lastkey = data.key;
-            nextkey = parseInt(lastkey) + 1;
+   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+     <script>
+    // Replace your Configuration here..
 
+    var nextkey = 0;
+    var config = {
+      apiKey: "AIzaSyB-QqOCEreJ1Yn9EWb84NdwJ4E-FvKfC7I",
+      authDomain: "edok-1c5a9.firebaseapp.com",
+      databaseURL: "https://edok-1c5a9.firebaseio.com",
+      projectId: "edok-1c5a9",
+      storageBucket: "edok-1c5a9.appspot.com",
+      messagingSenderId: "628540937215",
+      appId: "1:628540937215:web:6d7ad591c271f0d0394dca",
+      measurementId: "G-LH94VM5FTM"
+    };
+    firebase.initializeApp(config);
+  </script>;
+<script>
+    var database = firebase.database();
+    database.ref('serviceProviderApplications/').on('child_added', function (snapshot) {
+      var data = snapshot.val();
+      var key = snapshot.key;
+      nexkey = parseInt(key) + 1
+
+      $(document).ready(function () {
+        $('#example').DataTable();
+        var dataTable = $("#example").dataTable().api();
+        tr = document.createElement("tr");
+        tr.innerHTML = '<tr ><td><img  style = "width: 40px;height: 30px;border-radius: 48px;" src = ' + snapshot.val().selfiephotoURL + '/></td><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().status + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn-outline-primary btn-rounded waves-effect" style = "color:white">Accept</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn-outline-danger btn-rounded waves-effect" style = "color:white" id="myBtn">Reject</button></a></td></tr>';
+        dataTable.row.add(tr);
+        dataTable.draw();
+      });
+
+    });
+
+        database.ref('serviceProviderApplications/').on('child_changed', function (snapshot) {
+            update_data_table(snapshot.val().firstName, snapshot.val().lastName, snapshot.val().status, snapshot.val().mobileNumber, snapshot.val().email, data.key)
         });
 
-        database.ref('serviceProviderApplications/').on('child_changed', function (data) {
-            update_data_table(data.val().firstName, data.val().lastName, data.val().status, data.val().mobileNumber, data.val().email, data.key)
-        });
-
-        database.ref('serviceProviderApplications/').on('child_removed', function (data) {
-            remove_data_table(data.key)
+        database.ref('serviceProviderApplications/').on('child_removed', function (snapshot) {
+            remove_data_table(snapshot.key)
         });
 
         function add_data_table(selfiePhotoURL, firstName, lastName, status, mobileNumber, email, key) {
@@ -371,7 +306,7 @@
 
 
         function update_data_table(firstName, lastName, status, mobileNumber, email) {
-            $("#hmd-table #" + key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + selfiePhotoURL + '/></td><td>' + firstName + '</td><td>' + lastName + '</td><td>' + status + '</td> <td>' + mobileNumber + '</td> <td>' + email + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn-outline-danger btn-rounded waves-effect" style = "color:white" id="myBtn">Reject</button></a></td>');
+      tr.innerHTML = '<tr ><td><img style = "width: 40px;height: 30px;border-radius: 48px;"  src = ' + snapshot.val().photoURL + '/></td><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().status + '</td> <td>' + mobileNumber + '</td> <td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';    
         }
 
 
@@ -429,7 +364,7 @@
                     if (snapshot.numChildren() == 0) {
                         nextkey = 1;
                     }
-                    new_data($("#txtfirstfirstName").val(), $("#txtlastfirstName").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(), nextkey);
+                    // new_data($("#txtfirstfirstName").val(), $("#txtlastfirstName").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(), nextkey);
 
                     window.location.reload();
                 });
@@ -504,14 +439,6 @@ $("#txtKey").val(key);
             $("#modalRemovebox").addClass("is-active")
         })
 
-		$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#hmd-table tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});	
     </script>
 
 
