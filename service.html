@@ -126,6 +126,11 @@ body {font-family: "Lato", sans-serif;}
     margin: 30px;
 }
 
+#th{
+	font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
 </style>
 
 
@@ -135,8 +140,7 @@ body {font-family: "Lato", sans-serif;}
 	<header>
 
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark blue-gradient scrolling-navbar" style = "position: fixed;">
-		  <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  <a class="navbar-brand" href="#"><img src="img/dashboard/logo.png" style = "width: 56px;"></a>		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
@@ -226,21 +230,19 @@ body {font-family: "Lato", sans-serif;}
 			 
 			</form>
 		
-			<div class="table-responsive">
-<!-- Trigger/Open The Modal -->
-			
+<div class="table-responsive">			
   <table class="table" id="example">
-    <thead >
+    <thead  style = "background-color: #3fa2e2;">
       <tr>
-		<th>Profile</th>
-		<th>Name</th>
-		<th>Description</th>
-		<th>Service ID</th>
-		<th>Schedule</th>
-		<th>Price</th>
-		<th>Primary Care</th>
-		<th>Edit</th>
-		<th>Remove</th>
+		<th id = "th">Profile</th>
+		<th id = "th">Name</th>
+		<th id = "th">Description</th>
+		<th id = "th">Service ID</th>
+		<th id = "th">Schedule</th>
+		<th id = "th">Price</th>
+		<th id = "th">Primary Care</th>
+		<th id = "th">Edit</th>
+		<th id = "th">Remove</th>
       </tr>
     </thead>
     <tbody id="hmd-table">
@@ -253,33 +255,31 @@ body {font-family: "Lato", sans-serif;}
 	  <!-- <button class="btn btn blue-gradient btn-rounded "  id = "btnAdd" style = "color: white;
 	  position: relative;
 	  top: 100px">Add</button></a></td> -->
-
-		
+	
 	  <div id="modalRemovebox" class="modal">
 		<div class="modal-background"></div>
 		<div class="modal-card">
 			<header class="modal-card-head blue-gradient">
-				<p class="modal-card-title">Do you want to Delete this?</p>
-				<button class="btnClose delete" aria-label="close"></button>
+				<p class="modal-card-title" style = "color: white;">Do you want to Delete this?</p>
+				<!-- <button class="btnClose delete" aria-label="close"></button> -->
 			</header>
 		
 			<div class="modal-card-foot chums-save">
-				<button id="removeThis" class="btn blue-gradient" style = "color:white">Yes</button>
+				<button id="removeThis" class="btn blue-gradient btnClose" style = "color:white">Yes</button>
 				<!-- <button id="btnSavetime" class="button is-success">Save changes</button> -->
-				<button id="cancelRemove" class="btn btn-mdb-color" style = "color:white">No</button>
+				<button id="cancelRemove" class="btn btn-mdb-color btnClose" style = "color:white">No</button>
 			</div>
 		</div>
 
 	</div>
 	  
-	
 	 
 		<div id="modal" class="modal">
 			<div class="modal-background"></div>
 			<div class="modal-card">
 				<header class="modal-card-head blue-gradient">
 					<p class="modal-card-title">Person Form</p>
-					<button class="btnClose delete" aria-label="close"></button>
+					<!-- <button class="btnClose delete" aria-label="close"></button> -->
 				</header>
 				<section class="modal-card-body">
 					<div class="field">
@@ -326,29 +326,26 @@ body {font-family: "Lato", sans-serif;}
 				<div class="modal-card-foot chums-save">
 					<button id="btnSave" class="btn blue-gradient" style = "color:white">Save changes</button>
 					<!-- <button id="btnSavetime" class="button is-success">Save changes</button> -->
-					<button id="btnClose" class="btn btn-mdb-color" style = "color:white">Cancel</button>
+					<button id="btnClose" class="btn btn-mdb-color btnClose" style = "color:white">Cancel</button>
 				</div>
 			</div>
 
 		</div>
-		
-	
 
-		<!-- The Modal -->
 		<div id="myModal" class="modal">
-		
-		  <!-- Modal content -->
 		  <div class="modal-content">
 			<span class="close">&times;</span>
 			<p>Some text in the Modal..</p>
 		  </div>
-</div>
+		</div>
 
 	
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
 		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
 	<script>
+
+	// FIREBASE DATABASE CONFIGURATION
 		var config = {
 		apiKey: "AIzaSyB-QqOCEreJ1Yn9EWb84NdwJ4E-FvKfC7I",
 		authDomain: "edok-1c5a9.firebaseapp.com",
@@ -379,20 +376,14 @@ body {font-family: "Lato", sans-serif;}
 
 		function add_data_table(photoURL, name, description, serviceID, schedule, price, key) {
 			$("#hmd-table").append('<tr  id="'+key+'"><td><img style = "width:30px" src = ' + photoURL + '/></td><td>' + name + '</td><td>' + description + '</td><td>' + serviceID + '</td><td>' + schedule + '</td> <td>' + price + '</td>   <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn blue-gradient btn-rounded" style = "color:white" id="myBtn">Remove</button></a></td></tr>');
-		
- 
-        
+		     
         }
-
-
 
 		function update_data_table(name,description,serviceID,schedule,price,primaryCare) {
 			$("#hmd-table #"+ key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + photoURL + '/></td><td>' + name + '</td><td>' + description + '</td><td>' + serviceID + '</td> <td>' + schedule + '</td> <td>' + price + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn blue-gradient btn-rounded" style = "color:white" id="myBtn">Remove</button></a></td>');
 		}
 
-
-
-		function remove_data_table(key) {
+		function remove_data_table(key) {  // REMOVE FROM DATABASE
 			$("#hmd-table #"+ key).remove();
 		}
 
@@ -407,7 +398,6 @@ body {font-family: "Lato", sans-serif;}
 			});
 		}
 
-
 		function update_data(name, description, serviceID,schedule,price,primaryCare) {
 			database.ref('services/' + key).update({
 				name: name,
@@ -416,27 +406,22 @@ body {font-family: "Lato", sans-serif;}
 				schedule:schedule,
 				price:price,
 				primaryCare:primaryCare
-				// lastName: lastName,
-				// gender: gender,
-				// homeAddress: homeAddress,
-				// mobileNumber:mobileNumber
 			});
 		}
 
-
+// ADD LIST FROM INPUT BOXES
 		$("#btnAdd").click(function () {
 			$("#txtfirstname").val("");
 			$("#txtlastname").val("");
 			$("#txtgender").val("");
 			$("#txtnumber").val("");
-
 			$("#txtType").val("N");
 			$("#txtKey").val("0");
 			$("#modal").addClass("is-active");
-
-
-
 		});
+
+
+// SAVE THE ADDED AND EDITED LIST FUNCTION
 		$("#btnSave").click(function () {
 
 			if ($("#txtType").val() == 'N') {
@@ -451,13 +436,12 @@ body {font-family: "Lato", sans-serif;}
 			}
 			else {
 				update_data($("#txtfirstname").val(), $("#txtlastname").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(),$("#txtKey").val());
-				window.location.reload();
-		
+				window.location.reload();		
 			}
 			$("#btnClose").click();
-
-
 		});
+
+		// EDIT FUNCTION
 		$(document).on("click", ".btnEdit", function (event) {
 			event.preventDefault();
 			key = $(this).attr("data-key");
@@ -475,18 +459,27 @@ body {font-family: "Lato", sans-serif;}
 		});
 
 
-		$(document).on("click", "#removeThis", function (event) {
+// REMOVE FUNCTION
+	$(document).on("click", "#removeThis", function (event) {
 			event.preventDefault();
 			key = $(this).attr("data-key");
 			database.ref('services/' + key).remove();
 			$("#modalRemovebox").removeClass("is-active")
 		})
 
+// REMOVE AND  CLASS  POP UP
+$(document).on("click", ".btnClose", function (event) {
+	$("#modal").removeClass("is-active");
+	$("#modalRemovebox").removeClass("is-active")
+			})
+	
 		$(document).on("click", ".btnRemove", function (event) {		
 			$("#modalRemovebox").addClass("is-active")
 		})
-	
-		$(document).ready(function(){
+
+		
+	// SEARCH FUNCTION
+$(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#hmd-table tr").filter(function() {

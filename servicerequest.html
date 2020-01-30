@@ -97,7 +97,7 @@ body {font-family: "Lato", sans-serif;}
 	<header>
 
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark blue-gradient scrolling-navbar" style = "position: fixed;">
-		  <a class="navbar-brand" href="#"><strong>Navbar</strong></a>
+		   <a class="navbar-brand" href="#"><img src="img/dashboard/logo.png" style = "width: 56px;"></a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -196,7 +196,7 @@ body {font-family: "Lato", sans-serif;}
 		<th id = "th">Service Status</th>
 		<th id = "th">Service Name</th>
         <th id = "th">Action</th>
-        <th id = "th">Action</th>
+        <!-- <th id = "th">Action</th> -->
       </tr>
     </thead>
     <tbody id="hmd-table">
@@ -317,16 +317,20 @@ body {font-family: "Lato", sans-serif;}
 		});
 
 		function add_data_table(requesterPhoto, requesterFname, requesterLname, requesterAddress, serviceStatus, serviceName, email, key) {
-			$("#hmd-table").append('<tr  id="'+key+'"><td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td><td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=""> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td></tr>');
+			// $("#hmd-table").append('<tr  id="'+key+'"><td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td><td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=""> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td></tr>');
 		
- 
+ 			$("#hmd-table").append('<tr  id="'+key+'"><td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td><td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>');
+
         
         }
 
 
 
 		function update_data_table(requesterPhoto, requesterFname, requesterLname, requesterAddress, serviceName, mobileNumber, email) {
-			$("#hmd-table #"+ key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td> <td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Remove</button></a></td><td><a href="#" data-key="' + key + '" class=" "> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td>');
+			// $("#hmd-table #"+ key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td> <td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Remove</button></a></td><td><a href="#" data-key="' + key + '" class=" "> <button class="btn btn blue-gradient btn-rounded btnRemove" style = "color:white">Remove</button></a></td>');
+		
+					$("#hmd-table #"+ key).html('  <th scope="row"></th> <td><img style = "width:30px" src = ' + requesterPhoto + '/></td><td>' + requesterFname + '</td><td>' + requesterLname + '</td><td>' + requesterAddress + '</td> <td>' + serviceStatus + '</td> <td>' + serviceName + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td>');
+
 		}
 
 
