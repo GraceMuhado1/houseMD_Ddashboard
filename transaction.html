@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>House MD</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-2.1.3.js"
+		integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.8/vue.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script> -->
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<!-- DataTables CSS -->
+<link href="css/addons/datatables.min.css" rel="stylesheet">
+<!-- DataTables JS -->
+<script href="js/addons/datatables.min.js" rel="stylesheet"></script>
+
+<!-- DataTables Select CSS -->
+<link href="css/addons/datatables-select.min.css" rel="stylesheet">
+<!-- DataTables Select JS -->
+<script href="js/addons/datatables-select.min.js" rel="stylesheet"></script>
+
+</head>
+
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background: linear-gradient(40deg, #303f9f, #45cafc);
+  width: 14%;
+  height: 120vh;
+  margin-top: 75px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  /* border: 1px solid #ccc; */
+  width: 82%;
+  border-left: none;
+      /* height: 1500px; */
+  margin-top: 80px;
+
+}
+
+
+#th{
+	font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+
+
+
+</style>
+<body>
+
+<header>
+
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark blue-gradient scrolling-navbar" style = "position: fixed;">
+             <a class="navbar-brand" href="#"><img src="img/dashboard/logo.png" style = "width: 56px;"></a>		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item active">
+				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Features</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Pricing</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Opinions</a>
+			  </li>
+			</ul>
+			<ul class="navbar-nav nav-flex-icons">
+			  <li class="nav-item">
+				<a class="nav-link"><i class="fab fa-facebook-f"></i></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link"><i class="fab fa-twitter"></i></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link"><i class="fab fa-instagram"></i></a>
+			  </li>
+			</ul>
+		  </div>
+		</nav>
+	  
+	  </header>
+
+	  <div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"> <img src="img/dashboard/jimmy.jpg" style = "width: 45px;height: 39px;border-radius: 44px;"><span style = "margin: 12px;font-size: 16px;">David Grey</span> <a style = " margin: 59px; font-size: 12px;top: -15px; position: relative;">Admin</a></button>
+        <a href = "dashboard.html"><button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Dashboard <i class="fas fa-home"></i></button></a>
+		<a href = "servicerequest.html"><button class="tablinks" >Providers <i class="fas fa-user-tie"></i></button></a>
+		<a href = "members.html"> <button class="tablinks" >Members <i class="fas fa-users"></i></button></a>
+	   <button class="tablinks" >Transaction</button>
+	   <button class="tablinks" >Earnings</button>
+	   <a href = "serviceapplication.html"> <button class="tablinks" >Applications</button></a>	  <a href = "service.html"><button class="tablinks">Services</button></a> 
+	  </div>
+
+        <div id="London" class="tabcontent">
+            <button type="button" style = "margin: 19px;border: 2px solid #3e9cdd;" class="btn btn-rounded btn-lg">Member<i class="fas fa-scroll"></i></button>
+            	<p style = "float:right;margin: 30px;color: #bb4242;font-size: 14px;">Transaction / Services </p>
+                    <div class="table-responsive card" style ="padding: 30px;">
+                  <table class="table" id="example">
+                    <thead>
+                      <tr>  
+                        <th> First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th> Address </th>                
+						  <th> Email</th>
+                        <th> Mobile Number </th>
+                        <th>Edit</th>
+                      </tr>
+                    </thead>
+                    <tbody id="housemd_table">
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+              
+  
+<div id="modal" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Person Form</p>
+					
+				</header>
+				<section class="modal-card-body">
+					<div class="field">
+						<label class="label">First Name</label>
+						<div class="control">
+							<input type="hidden" id="txtType">
+							<input type="hidden" id="txtKey">
+							<input class="input" id="txtfirstname" type="text" placeholder="Chums ID">
+						</div>
+					
+					</div>
+					<div class="field">
+						<label class="label">Last Name</label>
+						<div class="control">
+							<input class="input" id="txtlastname" type="text" placeholder="username">
+                        	</div>
+					
+					</div>
+					<div class="field">
+						<label class="label">Gender</label>
+						<div class="control">
+							<input class="input" id="txtgender" type="text" placeholder="score">
+						</div>
+						<!-- <p class="help"></p> -->
+					</div>
+
+					<div class="field">
+						<label class="label">Home Address</label>
+						<div class="control">
+							<input class="input" id="txtaddress" type="text" placeholder="score">
+						</div>
+						<!-- <p class="help"></p> -->
+					</div>
+
+					<div class="field">
+						<label class="label">Mobile Number</label>
+						<div class="control">
+							<input class="input" id="txtnumber" type="text" placeholder="score">
+						</div>
+
+							<div class="field">
+						<label class="label">Email</label>
+						<div class="control">
+							<input class="input" id="txtemail" type="text" placeholder="score">
+						</div>
+						<!-- <p class="help"></p> -->
+					</div>
+				</section>
+				<div class="modal-card-foot chums-save">
+					<button id="btnSave" class="btn blue-gradient" style = "color:white">Save changes</button>
+					<!-- <button id="btnSavetime" class="button is-success">Save changes</button> -->
+					<button id="btnClose" class="btn btn-mdb-color" style = "color:white">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+  <!-- jQuery CDN -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+  <!-- Firebase -->
+
+  <script>
+
+    //  search function
+    $(document).ready(function () {
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#housemd_table tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+
+    });
+
+ 
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script>
+    // Replace your Configuration here..
+
+    var nextkey = 0;
+    var config = {
+      apiKey: "AIzaSyB-QqOCEreJ1Yn9EWb84NdwJ4E-FvKfC7I",
+      authDomain: "edok-1c5a9.firebaseapp.com",
+      databaseURL: "https://edok-1c5a9.firebaseio.com",
+      projectId: "edok-1c5a9",
+      storageBucket: "edok-1c5a9.appspot.com",
+      messagingSenderId: "628540937215",
+      appId: "1:628540937215:web:6d7ad591c271f0d0394dca",
+      measurementId: "G-LH94VM5FTM"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+
+  <script>
+    var database = firebase.database();
+    database.ref('requestServices/').on('child_added', function (snapshot) {
+      var data = snapshot.val();
+      var key = snapshot.key;
+      nexkey = parseInt(key) + 1
+
+      $(document).ready(function () {
+        $('#example').DataTable();
+        var dataTable = $("#example").dataTable().api();
+        tr = document.createElement("tr");
+        tr.innerHTML = '<tr ><td>' + snapshot.val().requesterName + '</td><td>' + snapshot.val().serviceName + '</td><td>' + snapshot.val().serviceDesc + '</td><td>' + snapshot.val().servicePrice + '</td>  <td>' + snapshot.val().requesterEmail + '</td> <td>' + snapshot.val().requesterAddress + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';
+        dataTable.row.add(tr);
+        dataTable.draw();
+      });
+
+    });
+
+    database.ref('requestServices/').on('child_changed', function (snapshot) {
+      update_data_table(snapshot.val().requesterName , snapshot.val().serviceName , snapshot.val().serviceDesc,snapshot.val().servicePrice,snapshot.val().requesterEmail, snapshot.val().requesterAddress, snapshot.key)
+    });
+
+  function update_data_table(requesterName, serviceName, serviceDesc,servicePrice , requesterEmail, requesterAddress) {
+      // $("#housemd_table #"+ key).html('  <th scope="row"></th><td>' + firstName + '</td><td>' + lastName + '</td><td>' + gender + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn bg-btn  btn-rounded z-depth-1a" style = "color:white">Edit</button></a></td><td><a href="#" class="btnRemove"  data-key="' + key + '"><button class="btn bg-btn  btn-rounded z-depth-1a" style = "color:white">Remove</button></a></td>');
+      // tr.innerHTML = '<tr ><td><img src = '+snapshot.val().photoURL+'/></td<td>' + snapshot.val().firstName+'</td><td>' + snapshot.val().lastName+ '</td><td>' + snapshot.val().gender + '</td><td>' + snapshot.val().homeAddress + '</td>  <td>' + snapshot.val().birthDate+ '</td> <td>' + snapshot.val().mobileNumber + '</td> <td> <a data-key = "' +key+'" class = "btnEdit"><button>Edit </button>  </a></td></tr>';
+      tr.innerHTML = '<tr ><td>' + snapshot.val().requesterName + '</td><td>' + snapshot.val().serviceName + '</td><td>' + snapshot.val().serviceDesc + '</td><td>' + snapshot.val().servicePrice + '</td>  <td>' + snapshot.val().requesterEmail + '</td> <td>' + snapshot.val().requesterAddress + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';    
+    }
+    
+	function update_data(requesterName, serviceName, serviceDesc,servicePrice , requesterEmail, requesterAddress) {
+			database.ref('requestServices/' + key).update({
+				requesterName:requesterName,
+                serviceName:serviceName,
+                servicePrice:servicePrice,
+                requesterEmail:requesterEmail,
+                requesterAddress:requesterAddress
+			});
+		}
+
+
+// SAVE THE ADDED AND EDITED LIST
+    $("#btnSave").click(function () {
+      if ($("#txtType").val() == 'N') {
+        database.ref('requestServices/').once("value").then(function (snapshot) {
+          if (snapshot.numChildren() == 0) {
+            nextkey = 1;
+          }
+          // new_data($("#firstName").val(), $("#lastName").val(), $("#gender").val(), nextkey);
+          // update_data($("#firstName").val(), $("#lastName").val(), $("#gender").val(), $("#txtKey").val())
+ 	            window.location.reload();
+        });
+    }
+      else {
+        update_data($("#txtfirstname").val(), $("#txtlastname").val(), $("#txtgender").val(),$("#txtaddress").val(), $("#txtnumber").val(),$("#txtemail").val(),$("#txtKey").val());
+        $("#modal").removeClass("is-active");
+       	window.location.reload();
+      }
+    });
+
+
+// EDIT FUNCTION
+    $(document).on("click", ".btnEdit", function (event) {
+      $("#myModal").show();
+      event.preventDefault();
+      key = $(this).attr("data-key");
+      database.ref('requestServices/' + key).once("value").then(function (snapshot) {
+     	$("#txtfirstname").val(snapshot.val().requesterName);
+				$("#txtlastname").val(snapshot.val().serviceName);
+				$("#txtgender").val(snapshot.val().gender);
+				$("#txtaddress").val(snapshot.val().servicePrice);
+				$("#txtnumber").val(snapshot.val().requesterEmail);
+				$("#txtemail").val(snapshot.val().requesterAddress);
+        $("#txtType").val("E");
+        $("#txtKey").val(key);
+      });
+	$("#modal").addClass("is-active");
+    });
+
+	   $(document).on("click", "#btnClose", function (event) {
+
+		   $("#modal").removeClass("is-active");
+	   })
+ 
+  </script>
+
+
+
+
+</body>
+
+</html>
