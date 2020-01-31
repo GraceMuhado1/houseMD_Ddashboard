@@ -33,7 +33,7 @@
 </head>
 <style>
 * {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
+
 
 /* Style the tab */
 .tab {
@@ -81,6 +81,10 @@ body {font-family: "Lato", sans-serif;}
   margin-top: 80px;
 
 }
+.th{
+  font-weight: bold;
+  color:white;
+}
 </style>
 
 
@@ -127,11 +131,10 @@ body {font-family: "Lato", sans-serif;}
 	  </header> 
     <div class="tab">
      <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"> <img src="img/dashboard/jimmy.jpg" style = "width: 45px;height: 39px;border-radius: 44px;"><span style = "margin: 12px;font-size: 16px;">David Grey</span> <a style = " margin: 59px; font-size: 12px;top: -15px; position: relative;">Admin</a></button>
-
       <a href = "dashboard.html"><button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Dashboard<i class="fas fa-home"></i></button></a>
       <a href = "servicerequest.html"><button class="tablinks" >Providers <i class="fas fa-user-tie"></i></button></a>
       <a href = "members.html"> <button class="tablinks" >Members <i class="fas fa-users"></i></button></a>
-       <button class="tablinks" >Transaction</button>
+      <a href = "transaction.html"><button class="tablinks" >Transaction</button></a>
        <button class="tablinks" >Earnings</button>
        <a href = "serviceapplication.html"> <button class="tablinks" >Applications</button></a>	  <a href = "service.html"><button class="tablinks">Services</button></a> 
       </div>
@@ -219,8 +222,24 @@ body {font-family: "Lato", sans-serif;}
    
     <div class="card-body">
         <iframe src="map.html" height="500" width="650" style = "margin: 0px -12px;"></iframe>
-    </div>  
+ 
+      </div>  
   </div>
+
+  <table class="table table-bordered" id ="example" style = "margin-top: 40px;" >
+    <thead>
+      <tr class = "blue-gradient">
+        <th scope="col" class = "th" style = "color:white">Requester Name</th>
+        <th scope="col" class = "th" style = "color:white">Service Name</th>
+        <th scope="col" class = "th" style = "color:white">Service Description</th>
+        <th scope="col" class = "th" style = "color:white">Service Price</th>
+      </tr>
+    </thead>
+    <tbody id="hmd-table">
+  
+    </tbody>
+  </table>
+
  </div>
   <div class="col-4">
 <div class="card">
@@ -253,7 +272,45 @@ body {font-family: "Lato", sans-serif;}
     </div>
   </div>
 	  </div>
-		
+    
+    
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+	<script>
+
+	// FIREBASE DATABASE CONFIGURATION
+		var config = {
+		apiKey: "AIzaSyB-QqOCEreJ1Yn9EWb84NdwJ4E-FvKfC7I",
+		authDomain: "edok-1c5a9.firebaseapp.com",
+		databaseURL: "https://edok-1c5a9.firebaseio.com",
+		projectId: "edok-1c5a9",
+		storageBucket: "edok-1c5a9.appspot.com",
+		messagingSenderId: "628540937215",
+		appId: "1:628540937215:web:6d7ad591c271f0d0394dca",
+		measurementId: "G-LH94VM5FTM"
+	};
+		firebase.initializeApp(config);
+		var database = firebase.database();
+	
+
+		database.ref('requestServices/').limitToFirst(5).on('child_added', function (data) {
+			add_data_table(data.val().requesterName, data.val().serviceName, data.val().serviceDesc,data.val().servicePrice, data.key);
+			var lastkey = data.key;
+			nextkey = parseInt(lastkey) + 1;
+			
+
+		});
+
+		function add_data_table(requesterName, serviceName, serviceDesc, servicePrice, key) {
+			$("#hmd-table").append('<tr  id="'+key+'"><td>' + requesterName + '</td><td>' + serviceName + '</td><td>' + serviceDesc + '</td><td>' + servicePrice + '</td> </tr>');
+		     
+        }
+
+
+	</script>
+
 
 </body>
 
