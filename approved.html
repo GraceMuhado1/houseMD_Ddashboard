@@ -15,6 +15,8 @@
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+
+    <link href="styletab.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.3.js"
         integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
 
@@ -30,8 +32,8 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-    <link href="styletab.css" rel="stylesheet">
 </head>
+
 
 <body>
 
@@ -83,6 +85,7 @@
         <a href="servicerequest.html"><button class="tablinks">Providers <i class="fas fa-user-tie"></i></button></a>
         <a href="members.html"> <button class="tablinks">Members <i class="fas fa-users"></i></button></a>
         <a href = "approved.html"> <button class="tablinks" >Approved Providers</button></a>
+
         <a href="transaction.html"><button class="tablinks">Transaction</button></a> <button class="tablinks">Earnings</button>
         <a href="serviceapplication.html"> <button class="tablinks">Applications</button></a> <a href="service.html"><button class="tablinks">Services</button></a>
     </div>
@@ -90,21 +93,18 @@
 
 
     <div id="London" class="tabcontent">
-        <button type="button" style="margin: 19px;border: 2px solid #3e9cdd;" class="btn btn-rounded btn-lg">Services<iclass="fas fa-scroll"></i></button>
-        <p style="float:right;margin: 30px;color: #bb4242;font-size: 14px;">Services / Description </p>
+        <button type="button" style="margin: 19px;border: 2px solid #3e9cdd;" class="btn btn-rounded btn-lg">Approved Providers<i class="fas fa-scroll"></i></button>
+        <p style="float:right;margin: 30px;color: #bb4242;font-size: 14px;">Approved / Providers </p>
         <div class="table-responsive card"  style ="padding: 30px;">
             <table class="table" id="example">
                 <thead class = "blue-gradient">
                     <tr>
-                        <th id="th">Profile</th>
-                        <th id="th">Name</th>
-                        <th id="th">Description</th>
-                        <th id="th">Service ID</th>
-                        <th id="th">Schedule</th>
-                        <th id="th">Price</th>
-                        <th id="th">Primary Care</th>
+                        <th id="th">Firt Name</th>
+                        <th id="th">Last Name</th>
+                        <th id="th">Mobile Number</th>
+                        <th id="th">Email</th>
                         <th id="th">Edit</th>
-                        <th id="th">Remove</th>
+                        <!-- <th id="th">Remove</th> -->
                     </tr>
                 </thead>
                 <tbody id="hmd-table">
@@ -141,7 +141,7 @@
             </header>
             <section class="modal-card-body">
                 <div class="field">
-                    <label class="label">Name</label>
+                    <label class="label">First Name</label>
                     <div class="control">
                         <input type="hidden" id="txtType">
                         <input type="hidden" id="txtKey">
@@ -150,32 +150,27 @@
                 </div>
                 
                 <div class="field">
-                    <label class="label">Description</label>
+                    <label class="label">Last Name</label>
                     <div class="control">
                         <input class="input" id="txtlastname" type="text" placeholder="username">
                     </div>
 
                 </div>
                 <div class="field">
-                    <label class="label">Service ID</label>
+                    <label class="label">Mobile Number</label>
                     <div class="control">
-                        <input class="input" id="txtgender" type="text" placeholder="score">
+                        <input class="input" id="txtMobilenumber" type="text" placeholder="score">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">Schedule</label>
+                    <label class="label">Email</label>
                     <div class="control">
-                        <input class="input" id="txtaddress" type="text" placeholder="score">
+                        <input class="input" id="txtemail" type="text" placeholder="score">
                     </div>
                 </div>
 
-                <div class="field">
-                    <label class="label">Price</label>
-                    <div class="control">
-                        <input class="input" id="txtnumber" type="text" placeholder="score">
-                    </div>
-                </div>
+        
             </section>
             <div class="modal-card-foot chums-save">
                 <button id="btnSave" class="btn blue-gradient" style="color:white">Save changes</button>
@@ -214,7 +209,7 @@
         var database = firebase.database();
 
 
-        database.ref('services/').on('child_added', function (snapshot) {
+        database.ref('approvedProviders/').on('child_added', function (snapshot) {
             var data = snapshot.val();
             var key = snapshot.key;
             nexkey = parseInt(key) + 1
@@ -222,7 +217,7 @@
                 $('#example').DataTable();
                 var dataTable = $("#example").dataTable().api();
                 tr = document.createElement("tr");
-                tr.innerHTML = '<tr ><td><img style = "width:30px" src = ' + snapshot.val().photoURL + '/></td><td>' + snapshot.val().name + '</td><td>' + snapshot.val().description + '</td><td>' + snapshot.val().serviceID + '</td> <td>' + snapshot.val().schedule + '</td> <td>' + snapshot.val().price + '</td> <td>' + snapshot.val().primaryCare + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn blue-gradient btn-rounded" style = "color:white" id="myBtn">Remove</button></a></td></tr>';
+                tr.innerHTML = '<tr ><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td> <td>' + snapshot.val().mobileNumber + '</td> <td>' + snapshot.val().email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';
                 dataTable.row.add(tr);
                 dataTable.draw();
             });
@@ -231,76 +226,71 @@
 
 
 
-        database.ref('services/').on('child_changed', function (data) {
-            update_data_table(data.val().name, data.val().description, data.val().serviceID, data.val().schedule, data.val().price, data.val().primaryCare, data.key)
+        database.ref('approvedProviders/').on('child_changed', function (data) {
+            update_data_table(data.val().firstName, data.val().lastName, data.val().mobileNumber, data.val().email, data.key)
         });
 
-        database.ref('services/').on('child_removed', function (data) {
+        database.ref('approvedProviders/').on('child_removed', function (data) {
             remove_data_table(data.key)
         });
 
-        function add_data_table(photoURL, name, description, serviceID, schedule, price, primaryCare, key) {
-            tr.innerHTML = '<tr><td><img style = "width:30px" src = ' + snapshot.val().photoURL + '/></td><td>' + snapshot.val().name + '</td><td>' + snapshot.val().description + '</td><td>' + snapshot.val().serviceID + '</td> <td>' + snapshot.val().schedule + '</td> <td>' + snapshot.val().price + '</td> <td>' + snapshot.val().primaryCare + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn blue-gradient btn-rounded" style = "color:white" id="myBtn">Remove</button></a></td></tr>';
+        function add_data_table(firstName, lastName, mobileNumber, email, key) {
+            tr.innerHTML = '<tr><td>' + snapshot.val().firstName+ '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().mobileNumber + '</td> <td>' + snapshot.val().email + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';
 
         }
 
-        function update_data_table(name, description, serviceID, schedule, price, primaryCare) {
-            tr.innerHTML = '<td><img style = "width:30px" src = ' + snapshot.val().photoURL + '/></td><td>' + snapshot.val().name + '</td><td>' + snapshot.val().description + '</td><td>' + snapshot.val().serviceID + '</td> <td>' + snapshot.val().schedule + '</td> <td>' + snapshot.val().price + '</td> <td>' + snapshot.val().primaryCare + '</td> <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn blue-gradient btn-rounded" style = "color:white" id="myBtn">Remove</button></a></td>';
+        function update_data_table(firstName, lastName, mobileNumber, email) {
+            tr.innerHTML = '<td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td> <td>' + snapshot.val().mobileNumber + '</td> <td>' + snapshot.val().email + '</td <td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td>';
         }
 
         function remove_data_table(key) {  // REMOVE FROM DATABASE
             $("#hmd-table #" + key).remove();
         }
 
-        function new_data(name, description, serviceID, schedule, price, key) {
-            database.ref('services/' + key).set({
-                name: name,
-                description: description,
-                serviceID: serviceID,
-                schedule: schedule,
-                price: price,
+        // function new_data(firstName, lastName, key) {
+        //     database.ref('approvedProviders/' + key).set({
+        //        firstName:firstName,
+        //        lastName:lastName
 
-            });
-        }
+        //     });
+        // }
 
-        function update_data(name, description, serviceID, schedule, price, primaryCare) {
-            database.ref('services/' + key).update({
-                name: name,
-                description: description,
-                serviceID: serviceID,
-                schedule: schedule,
-                price: price,
-                primaryCare: primaryCare
+        function update_data(firstName, lastName , mobileNumber, email) {
+            database.ref('approvedProviders/' + key).update({
+                firstName:firstName,
+               lastName:lastName,
+               mobileNumber:mobileNumber,
+               email:email
             });
         }
 
         // ADD LIST FROM INPUT BOXES
-        $("#btnAdd").click(function () {
-            $("#txtfirstname").val("");
-            $("#txtlastname").val("");
-            $("#txtgender").val("");
-            $("#txtnumber").val("");
-            $("#txtType").val("N");
-            $("#txtKey").val("0");
-            $("#modal").addClass("is-active");
-        });
+        // $("#btnAdd").click(function () {
+        //     $("#txtfirstname").val("");
+        //     $("#txtlastname").val("");
+        //     $("#txtgender").val("");
+        //     $("#txtnumber").val("");
+        //     $("#txtType").val("N");
+        //     $("#txtKey").val("0");
+        //     $("#modal").addClass("is-active");
+        // });
 
 
         // SAVE THE ADDED AND EDITED LIST FUNCTION
         $("#btnSave").click(function () {
 
             if ($("#txtType").val() == 'N') {
-                database.ref('services/').once("value").then(function (snapshot) {
+                database.ref('approvedProviders/').once("value").then(function (snapshot) {
                     if (snapshot.numChildren() == 0) {
                         nextkey = 1;
                     }
-                    new_data($("#txtfirstname").val(), $("#txtlastname").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(), nextkey);
+                    new_data($("#txtfirstname").val(), $("#txtlastname").val(), $("#txtMobilenumber").val(), $("#txtemail").val(), nextkey);
 
                     window.location.reload();
                 });
             }
             else {
-                update_data($("#txtfirstname").val(), $("#txtlastname").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(), $("#txtKey").val());
+                update_data($("#txtfirstname").val(), $("#txtlastname").val(), $("#txtMobilenumber").val(), $("#txtemail").val(), $("#txtKey").val());
                 window.location.reload();
             }
             $("#btnClose").click();
@@ -310,13 +300,11 @@
         $(document).on("click", ".btnEdit", function (event) {
             event.preventDefault();
             key = $(this).attr("data-key");
-            database.ref('services/' + key).once("value").then(function (snapshot) {
-                $("#txtfirstname").val(snapshot.val().name);
-                $("#txtlastname").val(snapshot.val().description);
-
-                $("#txtgender").val(snapshot.val().serviceID);
-                $("#txtaddress").val(snapshot.val().schedule);
-                $("#txtnumber").val(snapshot.val().price);
+            database.ref('approvedProviders/' + key).once("value").then(function (snapshot) {
+                $("#txtfirstname").val(snapshot.val().firstName);
+                $("#txtlastname").val(snapshot.val().lastName);
+                $("#txtMobilenumber").val(snapshot.val().mobileNumber);
+                $("#txtemail").val(snapshot.val().email);
                 $("#txtType").val("E");
                 $("#txtKey").val(key);
             });
@@ -328,7 +316,7 @@
         $(document).on("click", "#removeThis", function (event) {
             event.preventDefault();
             key = $(this).attr("data-key");
-            database.ref('services/' + key).remove();
+            database.ref('approvedProviders/' + key).remove();
             $("#modalRemovebox").removeClass("is-active")
         })
 

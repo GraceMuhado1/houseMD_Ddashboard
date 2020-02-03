@@ -28,6 +28,8 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <!-- DataTables CSS -->
 <link href="css/addons/datatables.min.css" rel="stylesheet">
+
+<link href="styletab.css" rel="stylesheet">
 <!-- DataTables JS -->
 <script href="js/addons/datatables.min.js" rel="stylesheet"></script>
 
@@ -38,66 +40,8 @@
 
 </head>
 
-<style>
-* {box-sizing: border-box}
-
-/* Style the tab */
-.tab {
-  float: left;
-  border: 1px solid #ccc;
-  background: linear-gradient(40deg, #303f9f, #45cafc);
-  width: 14%;
-  height: 120vh;
-  margin-top: 75px;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  display: block;
-  background-color: inherit;
-  color: white;
-  padding: 22px 16px;
-  width: 100%;
-  border: none;
-  outline: none;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  float: left;
-  padding: 0px 12px;
-  /* border: 1px solid #ccc; */
-  width: 82%;
-  border-left: none;
-      /* height: 1500px; */
-  margin-top: 80px;
-
-}
 
 
-#th{
-	font-weight: bold;
-    font-size: 14px;
-    color: white;
-}
-
-
-
-</style>
 <body>
 
 <header>
@@ -143,6 +87,8 @@
         <a href = "dashboard.html"><button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Dashboard <i class="fas fa-home"></i></button></a>
 		<a href = "servicerequest.html"><button class="tablinks" >Providers <i class="fas fa-user-tie"></i></button></a>
 		<a href = "members.html"> <button class="tablinks" >Members <i class="fas fa-users"></i></button></a>
+		<a href = "approved.html"> <button class="tablinks" >Approved Providers</button></a>
+
 		<a href = "transaction.html"><button class="tablinks" >Transaction</button></a>	   <button class="tablinks" >Earnings</button>
 	   <a href = "serviceapplication.html"> <button class="tablinks" >Applications</button></a>	  <a href = "service.html"><button class="tablinks">Services</button></a> 
 	  </div>
