@@ -106,6 +106,7 @@
                         <th id = "th">Last Name</th>
                         <th id = "th">Status</th>
                         <th id = "th">Mobile Number</th>
+                        <th id = "th">Player ID</th>
                         <th id = "th">Email</th>
                         <th id = "th">Accept</th>
                         <th id = "th">Reject</th>
@@ -153,6 +154,7 @@
                         <input class="input" id="txtlastName" type="text" >
                         <input class="input" id="txtemail" type="text" >
                         <input class="input" id="txtMobilenumber" type="text" >
+                        <input class="input" id="txtlicense" type="text" >
                         <input class="input" id="txtapproved" type="text" >
                         <input class="input" id="txtFname" type="text" >
                         <input class="input" id="txtLname" type="text" >
@@ -221,7 +223,7 @@
         $('#example').DataTable();
         var dataTable = $("#example").dataTable().api();
         tr = document.createElement("tr");
-        tr.innerHTML = '<tr ><td><img  style = "width: 40px;height: 30px;border-radius: 48px;" src = ' + snapshot.val().selfiephotoURL + '/></td><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().status + '</td> <td>' + snapshot.val().mobileNumber + '</td> <td>' + snapshot.val().email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn-outline-primary btn-rounded waves-effect" style = "color:white">Accept</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn-outline-danger btn-rounded waves-effect" style = "color:white" id="myBtn">Reject</button></a></td></tr>';
+        tr.innerHTML = '<tr ><td><img  style = "width: 40px;height: 30px;border-radius: 48px;" src = ' + snapshot.val().selfiephotoURL + '/></td><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().status + '</td> <td>' + snapshot.val().mobileNumber + '</td> <td>' + snapshot.val().email + '</td><td>' + snapshot.val().prcLicenseNo + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn-outline-primary btn-rounded waves-effect" style = "color:white">Accept</button></a></td><td><a href="#" data-key="' + key + '" class=" btnRemove"> <button class="btn btn-outline-danger btn-rounded waves-effect" style = "color:white" id="myBtn">Reject</button></a></td></tr>';
         dataTable.row.add(tr);
         dataTable.draw();
       });
@@ -229,7 +231,7 @@
     });
 
         database.ref('serviceProviderApplications/').on('child_changed', function (snapshot) {
-            update_data_table(snapshot.val().firstName, snapshot.val().lastName, snapshot.val().status, snapshot.val().mobileNumber, snapshot.val().email, data.key)
+            update_data_table(snapshot.val().firstName, snapshot.val().lastName, snapshot.val().status, snapshot.val().mobileNumber, snapshot.val().email, snapshot.val().prcLicenseNo,data.key)
         });
 
         database.ref('serviceProviderApplications/').on('child_removed', function (snapshot) {
@@ -241,8 +243,8 @@
 
         // }
 
-        function update_data_table(firstName, lastName, status, mobileNumber, email) {
-      tr.innerHTML = '<tr ><td><img style = "width: 40px;height: 30px;border-radius: 48px;"  src = ' + snapshot.val().photoURL + '/></td><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().status + '</td> <td>' + mobileNumber + '</td> <td>' + email + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';    
+        function update_data_table(firstName, lastName, status, mobileNumber, email, prcLicenseNo) {
+      tr.innerHTML = '<tr ><td><img style = "width: 40px;height: 30px;border-radius: 48px;"  src = ' + snapshot.val().photoURL + '/></td><td>' + snapshot.val().firstName + '</td><td>' + snapshot.val().lastName + '</td><td>' + snapshot.val().status + '</td> <td>' + mobileNumber + '</td> <td>' + email + '</td> <td>' + prcLicenseNo + '</td><td><a href="#" data-key="' + key + '" class=" btnEdit"> <button class="btn btn blue-gradient btn-rounded" style = "color:white">Edit</button></a></td></tr>';    
         }
 
 
@@ -250,24 +252,25 @@
             $("#hmd-table #" + key).remove();
         }
 
-        function new_data(firstName, lastName, status, mobileNumber, email, key) {
-            database.ref('serviceProviderApplications/' + key).set({
-                firstName: firstName,
-                lastName: lastName,
-                status: status,
-                mobileNumber: mobileNumber,
-                email: email,
+        // function new_data(firstName, lastName, status, mobileNumber, email, key) {
+        //     database.ref('serviceProviderApplications/' + key).set({
+        //         firstName: firstName,
+        //         lastName: lastName,
+        //         status: status,
+        //         mobileNumber: mobileNumber,
+        //         email: email,
             
-            });
-        }
+        //     });
+        // }
 
 
-        function new_data(firstName, lastName, mobileNumber, email) {
+        function new_data(firstName, lastName, mobileNumber, email, prcLicenseNo) {
             database.ref('approvedProviders/' + key).set({
               firstName:firstName,
               lastName:lastName,
               mobileNumber:mobileNumber,
-              email:email
+              email:email,
+              prcLicenseNo:prcLicenseNo
            
           
             });
@@ -287,16 +290,16 @@
 
 
 
-        $("#btnAdd").click(function () {
-            $("#txtfirstfirstName").val("");
-            $("#txtlastfirstName").val("");
-            $("#txtgender").val("");
-            $("#txtnumber").val("");
-            $("#txtType").val("N");
-            $("#txtKey").val("0");
-            $("#modal").addClass("is-active");
+        // $("#btnAdd").click(function () {
+        //     $("#txtfirstfirstName").val("");
+        //     $("#txtlastfirstName").val("");
+        //     $("#txtgender").val("");
+        //     $("#txtnumber").val("");
+        //     $("#txtType").val("N");
+        //     $("#txtKey").val("0");
+        //     $("#modal").addClass("is-active");
 
-        });
+        // });
 
 
    
@@ -328,7 +331,7 @@
              if (snapshot.numChildren() == 0) {
             nextkey = 1;
           }
-          new_data($("#txtapproved").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(), nextkey);
+          new_data($("#txtapproved").val(), $("#txtgender").val(), $("#txtaddress").val(), $("#txtnumber").val(),  $("#txtlicense").val(),nextkey);
         window.location.reload();
     });
 
@@ -348,7 +351,7 @@ $(".btnaddProviders").click(function () {
                     if (snapshot.numChildren() == 0) {
                         nextkey = 1;
                     }
-                    new_data($("#txtfirstadd").val(), $("#txtlastName").val(),$("#txtMobilenumber").val(),$("#txtemail").val(), nextkey);
+                    new_data($("#txtfirstadd").val(), $("#txtlastName").val(),$("#txtMobilenumber").val(),$("#txtemail").val(),$("#txtlicense").val(), nextkey);
 
 
                     // window.location.reload();
@@ -357,7 +360,7 @@ $(".btnaddProviders").click(function () {
             else {
                 // update_data($("#txtfirstfirstName").val());
                 // window.location.reload();
-                new_data($("#txtfirstadd").val(), $("#txtlastName").val(),$("#txtMobilenumber").val(),$("#txtemail").val(), nextkey);
+                new_data($("#txtfirstadd").val(), $("#txtlastName").val(),$("#txtMobilenumber").val(),$("#txtemail").val(),$("#txtlicense").val(), nextkey);
 
             }
             $("#btnClose").click();
@@ -377,6 +380,7 @@ $(document).on("click", ".btnEdit", function (event) {
                 $("#txtlastName").val(snapshot.val().lastName);
                 $("#txtMobilenumber").val(snapshot.val().mobileNumber);
                 $("#txtemail").val(snapshot.val().email);
+                $("#txtlicense").val(snapshot.val().prcLicenseNo);
                 $("#txtapproved").val("approved");
 
                 $("#txtType").val("E");
