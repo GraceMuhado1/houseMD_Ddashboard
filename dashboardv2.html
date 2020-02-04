@@ -197,18 +197,17 @@
           </div>
           <div class="col-4">
             <div class="card">
-
-              <canvas id="myChart"></canvas>
-
-
+              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+                alt="Card image cap">
               <div class="card-body">
 
-                <h4 class="card-title"><a>Transaction</a></h4>
+                <h4 class="card-title"><a>Card title</a></h4>
                 <!-- Text -->
-                <p class="card-text">
-                 Summary</p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
+                  content.</p>
                 <!-- Button -->
-                <!-- <a href="#" class="btn btn-primary">Button</a> -->
+                <a href="#" class="btn btn-primary">Button</a>
               </div>
             </div>
             <br>
@@ -230,15 +229,10 @@
           </div>
         </div>
       </div>
-
-
- 
-
-
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
@@ -267,78 +261,6 @@
         $("#hmd-table").append('<tr  id="' + key + '"><td>' + requesterName + '</td><td>' + serviceName + '</td><td>' + serviceDesc + '</td><td>' + servicePrice + '</td> </tr>');
 
       }
-
-//      database.ref('requestServices/').orderByChild('serviceDesc').equalTo('Medical Consultation').on("value", function(snapshot) {
-//     // console.log(snapshot.val());
-//     snapshot.forEach(function(data) {
-//         console.log(snapshot.val().length);
-
-
-//       // var totalMedser = data.length;
-//       // console.log(totalMedser);
-//     });
-// });
-
-
-
-
-database.ref("requestServices/").orderByChild("serviceDesc").equalTo("Medical Consultation").once("value",snapshot => {
-    if (snapshot.exists()){
-      const userData = snapshot.val();
-      console.log("exists!", userData);
-      console.log(userData.length , "this is the total")
-      
-    }
-});
-
-   
-
-
-//       database.ref('requestServices/').orderByChild('serviceDesc').equalTo('Medical Consultation').on("value", function(snapshot) {
-//     // console.log(snapshot.val()); 
-//     snapshot.forEach(function(child) {
-//      var post = child.val();
-//       post.serviceDesc = child.key
-// var totalPost = post.serviceDesc.length
-//     console.log(totalPost);
-
-//       // var totalMedser = data.length;
-//       // console.log(totalMedser);
-//     });
-   
-//   });
-var ctx = document.getElementById('myChart').getContext('2d');
-
-var myDoughnutChart = new Chart(ctx, {
-
- 
-    // The type of chart we want to create
-    type: 'doughnut',
-    data: {
-    datasets: [{
-        data: [20, 20, 30],
-        backgroundColor: [ 'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)"',
-            'rgb(54, 162, 235)']
-    }],
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        'Medical Consultation',
-        'Medical Certificate',
-        'Referral Notes'
-    ]
-},
-
-options: {}
-  
-
-    // The data for our dataset
- 
-    // Configuration options go here
-    
-});
-
 
     </script>
 
